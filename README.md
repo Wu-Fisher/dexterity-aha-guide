@@ -21,8 +21,24 @@
 喜欢的话，请记得给我们点个Star 🌟，分享给更多志同道合的小伙伴，也欢迎积极提交PR，一起把这个指南做得更棒！
 
 ## HIGHTLIGHTS
+### 🌟 20250516 微型关节模组开源灵巧手 GaiaHand 组装教程
 
-微型关节开源灵巧手组装视频: TODO
+<div align="center">
+  <img src="./asset/20250516-gaiahand.jpg" alt="GaiaHand Assembly Guide" style="max-width: 80%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
+
+> **GaiaHand** 是一款微型关节开源灵巧手，专为机器人爱好者和研究人员设计，提供高自由度和模块化的组装体验。
+
+#### 📌 教程亮点：
+- **模块化设计**：每个关节独立组装，方便维护与升级。
+- **高自由度**：支持多种复杂操作，适配多场景应用。
+- **开源资源**：提供完整的设计文件与代码，助力社区创新。
+
+#### ⏳ 马上公布：
+敬请期待！我们正在紧锣密鼓地完善教程内容，确保为您提供最优质的学习体验。请持续关注本页面，或通过 [Star 🌟](https://github.com/Wu-Fisher/dexterity-aha-guide) 支持我们，第一时间获取更新通知！
+
+---
+> **提示**：如需帮助或有任何疑问，请联系 timmoraty@hotmail.com
 
 # 目录
 - [目录](#目录)
@@ -290,11 +306,11 @@
 **典型抓取分类体系速查表**
 | 分类体系                   | 主要特点                                                      | 适用场景                             | 代表引用                                                        |
 | -------------------------- | ------------------------------------------------------------- | ------------------------------------ | --------------------------------------------------------------- |
-| **Napier 双分法**          | 最早提出“力量 vs. 精细”功能视角，奠定后续研究框架             | 快速判别任务对握持稳定性或灵巧性偏重 | (SciSpace)                                                      |
-| **Cutkosky 16 类**         | 结合制造场景，总结16种工件抓取；树状层级体现抓取—对象尺寸关系 | 工业装配、夹具设计                   | (ResearchGate)                                                  |
+| **Napier 双分法**          | 最早提出“力量 vs. 精细”功能视角，奠定后续研究框架             | 快速判别任务对握持稳定性或灵巧性偏重 | [链接](https://scispace.com/pdf/the-prehensile-movements-of-the-human-hand-3cwm2534xp.pdf?utm_source=chatgpt.com)                                                      |
+| **Cutkosky 16 类**         | 结合制造场景，总结16种工件抓取；树状层级体现抓取—对象尺寸关系 | 工业装配、夹具设计                   | [链接](https://www.researchgate.net/publication/3298011_On_grasp_choice_grasp_models_and_the_design_of_hands_for_manufacturing_tasks?utm_source=chatgpt.com)                                                  |
 | **Science Robotics 28 类** | 基于日常交互语境，扩展到28种常用抓取；覆盖社交递物等情境      | 服务机器人、人机协作                 | [链接](https://www.science.org/doi/10.1126/scirobotics.aau9757) |
 | **GRASP 33 类**            | 综述并统一多家分类标准，引入“对抗方式+虚拟手指”四维编码       | 学术研究、通用算法对齐               | [链接](https://www.eng.yale.edu/grablab/pubs/Feix_THMS2016.pdf) |
-| **定量综合分类**           | 利用统计学与力学指标，将现有分类映射到可量化特征空间          | 数据驱动抓取评估                     | (PMC)                                                           |
+| **定量综合分类**           | 利用统计学与力学指标，将现有分类映射到可量化特征空间          | 数据驱动抓取评估                     | [链接](https://pmc.ncbi.nlm.nih.gov/articles/PMC6377750/?utm_source=chatgpt.com)                                                           |
 
 **使用建议**
 1. 场景选择：在工业抓取基准测试中，Cutkosky 体系足够；在日常操作研究中，优先采用 Science Robotics 或 GRASP 体系。
