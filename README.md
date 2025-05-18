@@ -155,7 +155,7 @@
 1. LEAP HAND 开源电机直驱灵巧手方案，结构简单，淘宝有售。 [[链接](https://v1.leaphand.com/)]
 2. HIT-DLR Hand（哈工大与德国航空航天中心联合开发）：高精度、高自由度电机直驱灵巧手。[[链接](https://www.dlr.de/en/rm/research/robotic-systems/hands/dlr-hit-hand)]
 3. 兆威灵巧手：基于自研微型空心杯电机的电动直驱仿生灵巧手，单指自由度≥3，整手17-20自由度，适配医疗机器人、消费级市场。
-4. 东林钟声（网名）做的三指灵巧手，开源地址：[[链接](https://github.com/orgs/Democratizing-Dexterous/repositories)]  
+4. [东林钟声大佬](https://github.com/yunlongdong)做的三指11自由度灵巧手方案，并且还搭配了自制的三指12自由度外骨骼方案。直取灵巧手开源地址：[[链接](https://github.com/Democratizing-Dexterous/DexterousHandGX11)]，外骨骼方案开源地址：[[链接](https://github.com/Democratizing-Dexterous/ExoskeletonGloveEX12)]
 ## 2.4 新材料驱动的灵巧手
 介绍：采用新型材料的特性作为致动器设计出的灵巧手。常见的新材料有形状记忆合金和目前已知功率密度接近人类的LCE液晶聚合物（建议参考清华大学化学系杨忠强老师的文献：J. Ma, Z. Yang*Smart Liquid Crystal Elastomer Fibers.Matter 2025, 8, 101950.2. ）。除此之外，还有一种柔性充气材料，例如气囊，充气后会膨胀缩短，从而作为一种新型致动器。（[[百度百科](https://baike.baidu.com/item/%E5%BD%A2%E7%8A%B6%E8%AE%B0%E5%BF%86%E5%90%88%E9%87%91/4939630)]）
 
@@ -304,15 +304,23 @@
 
 ### 6.2.1. isaac系：
 
-  1. Isaacsim：基于omniverse构建，拥有大量仿真资产，支持真实物理模拟、合成数据模拟、高质量渲染。[[链接](https://developer.nvidia.com/isaac/sim)] 
-  2. Isaaclab：基于Isaacsim开发，提供高保真物理模拟。弥合了高保真模拟和基于感知的机器人训练之间的差距。[[链接](https://developer.nvidia.com/isaac/lab)] 
-  3. Nvidia-warp：用于编写高性能模拟和图形代码的 Python 框架，可微分，支持PyTorch、JAX 和 Paddle 等框架。[[链接](https://nvidia.github.io/warp/index.html)] 
+1. Isaacsim：基于omniverse构建，拥有大量仿真资产，支持真实物理模拟、合成数据模拟、高质量渲染。[[链接](https://developer.nvidia.com/isaac/sim)] 
+
+2. Isaaclab：基于Isaacsim开发，提供高保真物理模拟。弥合了高保真模拟和基于感知的机器人训练之间的差距。[[链接](https://developer.nvidia.com/isaac/lab)] 
+
+3. Nvidia-warp：用于编写高性能模拟和图形代码的 Python 框架，可微分，支持PyTorch、JAX 和 Paddle 等框架。[[链接](https://nvidia.github.io/warp/index.html)] 
 
 ### 6.2.2. mujoco系：
 
-  1. Robosuite：基于 MuJoCo 的模块化仿真框架，提供多种机器人任务和基准环境，适用于机器人学习研究，目前已经更新到5.0版本。 [[链接](https://github.com/ARISE-Initiative/robosuite)]
-  2. Mujoco-playground：基于 MJX 构建，支持多种机器人平台，旨在简化仿真、训练和 sim-to-real 转移过程。 [[链接](https://playground.mujoco.org/)]
-  3. Mujoco-warp：结合 MuJoCo 和 NVIDIA Warp 的优势，提供高性能的可微分仿真环境，适用于需要梯度信息的优化任务。 [[链接](https://github.com/google-deepmind/mujoco_warp)]
+1. Robosuite：基于 MuJoCo 的模块化仿真框架，提供多种机器人任务和基准环境，适用于机器人学习研究，目前已经更新到5.0版本。 [[链接](https://github.com/ARISE-Initiative/robosuite)]
+
+2. Mujoco-playground：基于 MJX 构建，支持多种机器人平台，旨在简化仿真、训练和 sim-to-real 转移过程。 [[链接](https://playground.mujoco.org/)]
+
+3. Mujoco-warp：结合 MuJoCo 和 NVIDIA Warp 的优势，提供高性能的可微分仿真环境，适用于需要梯度信息的优化任务。 [[链接](https://github.com/google-deepmind/mujoco_warp)]
+
+### 6.2.3 genesis系
+
+1. Genesis：专为通用机器人/具身智能/物理 AI打造的高性能仿真平台。轻量化的同时提供高保真的物理引擎（在柔性物体和触觉上具备优势）。支持人造通用数据生成。 [[链接](https://github.com/Genesis-Embodied-AI/Genesis)]
 
 # 7. 通识参考（General Reference Guide）
 ## 7.1 人类抓取姿态体系 
