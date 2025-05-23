@@ -365,7 +365,7 @@ Lumina具身智能社区+具身智能指南: [链接](https://github.com/Tianxin
 
 
 # 关于我们/感谢😎
-<b>🦉Contributors</b>: <a href="https://scholar.google.com/citations?user=ZT8JOZEAAAAJ&hl=en">位德浩</a>，吴桐</a>，<a href="https://github.com/sen-code-lost">郭川俊</a>，<a href="https://scholar.google.com/citations?user=lwcY-TQAAAAJ&hl=zh-CN">王文晟</a>，林清泉</a>
+<b>🦉Contributors</b>: <a href="https://scholar.google.com/citations?user=ZT8JOZEAAAAJ&hl=en">位德浩</a>，吴桐</a>，<a href="https://github.com/sen-code-lost">郭川俊</a>，<a href="https://github.com/woltium">王文晟</a>，林清泉</a>
 
 <a href="https://github.com/Wu-Fisher/dexterity-aha-guide/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Wu-Fisher/dexterity-aha-guide" />
