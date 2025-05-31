@@ -288,7 +288,7 @@
 7. GraspM3 基于isaacgym生成的shadow hand 和 mano hand的抓取数据集，通过LLM进行后续语义标注 [[链接](https://github.com/lihaoming45/GraspM3)]
 8. EgoDex 使用Apple Vision Pro VR 系统采集的大量自我中心的灵巧人类操作数据集 [[论文](https://arxiv.org/abs/2505.11709)]
 9. DexGarmentLab 一个专为灵巧（尤其是双手）衣物操作设计的仿真环境，包含15种任务场景和高质量3D衣物模型，显著缩小仿真与现实的差距。[[链接](https://wayrise.github.io/DexGarmentLab/)]
-
+10. OphNet-3D 首个大规模医学领域中眼科手术的 RGB-D 三维重建数据集，提供细粒度手术阶段标注、双手MANO网格、工具6DoF姿态等丰富标签。基于该数据集，作者提出双手姿态估计与手-工具交互重建两个benchmark，[[论文](https://www.arxiv.org/abs/2505.17677)]
 
 # 5. 灵巧手真实操作数据采集方案
 通用灵巧操作的发展离不开高质量的真实示范数据，而灵巧手控制所需的数据采集系统也逐渐趋于多样化。目前主流的采集方式主要包括三类：基于遥操作系统的数据采集、基于数据手套的直接采集，以及基于外部感知设备间接重建的采集方法。这些方式各有优劣，常常根据任务需求、设备预算和精度要求进行选择组合。详见具身智能数据采集系统详细分类：[[链接](https://zhuanlan.zhihu.com/p/5777752031)]
@@ -319,6 +319,8 @@
 
 # 6. 灵巧手操作仿真平台
 灵巧手（Dexterous Hand）操作仿真平台在机器人研究和应用中扮演着重要角色，尤其在强化学习、模仿学习、抓取与操控策略开发等领域。以下是一些值得推荐的仿真平台和资源：
+
+❤️ 推荐一个专注于机器人物理仿真平台的社区 Simulately [[Wiki链接](https://simulately.wiki/)]
 
 ## 6.1仿真模型（urdf，mjcf）推荐：
 1. 由 Google DeepMind 提供的高质量 MJCF 格式机器人模型集合，涵盖多种机器人系统，包括灵巧手模型。 [[链接](https://github.com/google-deepmind/mujoco_menagerie)]
