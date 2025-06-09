@@ -49,8 +49,8 @@
 
 我们计划在接下来的时间里，持续更新和完善本指南，以下是我们的一些计划：
 
-- **[开源灵巧手GaiaHand 结构组装教程]**：组装视频已经上传至B站[链接](https://www.bilibili.com/video/BV1Ysjzz4E6D/?buvid=Y34FD53B8124B62B4AC2B0D961F1AF6EBA9B&from_spmid=dt.dt.0.0&is_story_h5=false&mid=WaAUbX%2B2msa3czq%2F2v27EA%3D%3D&plat_id=504&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=29CEB906-3D62-46FD-B744-594C40BCE995&share_source=WEIXIN&share_tag=s_i&spmid=dt.dt.0.0&timestamp=1748439056&unique_k=AdGgI1D&up_id=276123533&vd_source=b9a952aeb6ad36adfd92f02ff3b34f58) 开源零件图纸，3D打印说明，物料清单，组装教程 内容正在整理中，预计20250603前发布。
-- **[开源灵巧手GaiaHand 代码调试教程]**：预计20250609前 release
+- **[开源灵巧手GaiaHand 结构组装教程]**：组装视频已经上传至B站[链接](https://www.bilibili.com/video/BV1Ysjzz4E6D/?buvid=Y34FD53B8124B62B4AC2B0D961F1AF6EBA9B&from_spmid=dt.dt.0.0&is_story_h5=false&mid=WaAUbX%2B2msa3czq%2F2v27EA%3D%3D&plat_id=504&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=29CEB906-3D62-46FD-B744-594C40BCE995&share_source=WEIXIN&share_tag=s_i&spmid=dt.dt.0.0&timestamp=1748439056&unique_k=AdGgI1D&up_id=276123533&vd_source=b9a952aeb6ad36adfd92f02ff3b34f58) 开源零件图纸，3D打印说明，物料清单，组装教程 内容正在整理中，预计20250613前发布。
+- **[开源灵巧手GaiaHand 代码调试教程]**：预计20250619前 release
 - **[灵巧手机械硬件设计]**：规范化、系统性地梳理市面主流灵巧手（含商业与开源），对其结构、参数、适用场景、开源资源与社区活跃度等进行详细对比
 - **[English Version]**：待整体内容稳定
 - **[Acosmos社区上线]**：积极筹备中
@@ -87,6 +87,7 @@
     - [3.2.4 基于遥操作数据的操作 参考文献](#324-基于遥操作数据的操作-参考文献)
     - [3.2.5 VLA大模型算法 参考文献](#325-vla大模型算法-参考文献)
     - [3.2.5 Embodied Agent 参考文献](#325-embodied-agent-参考文献)
+  - [3.3 灵巧手重定向算法](#33-灵巧手重定向算法)
 - [4. 灵巧手操作数据集/Benchmark](#4-灵巧手操作数据集benchmark)
 - [5. 灵巧手真实操作数据采集方案](#5-灵巧手真实操作数据采集方案)
   - [5.1 数据采集手套](#51-数据采集手套)
@@ -238,10 +239,12 @@
 9. In-hand Object Reorientation 强化学习训练灵巧手做物体的重新定位 [[论文](https://arxiv.org/abs/2111.03043)][[项目](https://taochenshh.github.io/projects/in-hand-reorientation)]
 10. DexSinGrasp 基于强化学习实现物体分离与抓取统一策略 [[论文](https://arxiv.org/abs/2504.04516)][[项目](https://arxiv.org/abs/2504.04516)]
 11. RobustDexGrasp 一种基于单视图输入的零样本动态灵巧抓取框架，使用手部中心的动态距离向量表示局部接触形状，有效提升了对形状变化和扰动的泛化能力。通过特权教师策略和混合课程学习，学生策略在模拟训练后可稳健应对多种扰动。[[论文](https://arxiv.org/pdf/2504.05287)]
-12. 
+12. DexMachina 一种curriculum-based的功能性重定向算法，借助衰减的虚拟物体控制器，实现人手演示向机器人双手在长时序关节任务中的策略迁移。构建了一个支持多种灵巧手的评估基准，提升了重定向效果。[[论文](https://arxiv.org/abs/2505.24853)][[项目](https://project-dexmachina.github.io/)]
 
 ## 3.2 模仿学习流派
 模仿学习（Imitation Learning）在灵巧手控制中之所以日益流行，是因为它能够绕过强化学习中代价高昂的探索过程，直接从人类或专家示范中学习高质量策略，特别适合处理高维、接触复杂且奖励稀疏的任务场景。相比强化学习，模仿学习可以更快收敛于合理策略，减少训练时间与硬件磨损，并能通过离线数据构建初始策略，有效提升真实部署的可行性。然而，它也存在明显的局限，例如对训练数据分布的高度依赖，泛化能力相对较弱，难以应对未见过的物体或变化环境。随着大规模示范数据、视频模仿和跨模态表示学习的发展，模仿学习正朝向更强的泛化能力和更少监督的端到端操控迈进。未来，它将与强化学习和自监督技术深度融合，推动灵巧操作系统向更自然、高效的学习机制演化。
+
+分享一个Awesome列表 [Awesome Embodied Robotics and Agent](https://github.com/zchoi/Awesome-Embodied-Robotics-and-Agent)，虽然很多工作暂时与灵巧手无关，期待未来有更多灵巧手相关的工作加入。
 
 ### 3.2.1 综述 参考文献
 基于模仿学习的灵巧操作方法综述, [[论文](https://arxiv.org/pdf/2504.03515)]
@@ -277,6 +280,9 @@
 1. Code as Policie：LLM根据指令编写代码控制机器人。[[论文](https://arxiv.org/pdf/2209.07753) ][[项目](https://code-as-policies.github.io/)]
 2. PaLM-E：一个大型多模态模型，可以在多个模态上通过多种观察模式处理各种模态推理任务。[[论文](https://arxiv.org/pdf/2303.03378)] [[项目](https://palm-e.github.io/)] 
 3. ChatGPT for Robotics：将ChatGPT的功能扩展到机器人领域，用语言直观地控制多个平台，如机械臂、无人机和家庭助理机器人。[[论文](https://www.microsoft.com/en-us/research/wp-content/uploads/2023/02/ChatGPT___Robotics.pdf)][[项目](https://www.microsoft.com/en-us/research/articles/chatgpt-for-robotics/)]
+
+## 3.3 灵巧手重定向算法
+Dexhand retargetting 是一种将人手的操作技能迁移到灵巧手上的方法。它通过分析人手的运动模式和接触点，将这些信息映射到灵巧手的关节动作和接触策略上，从而实现对复杂物体的精细操作。这种方法通常结合了机器学习和优化技术，能够在不同的灵巧手结构和任务场景中实现高效的技能迁移。
 
 # 4. 灵巧手操作数据集/Benchmark
 相比传统两指或刚性夹爪的操作任务，灵巧手控制涉及更高维度的关节动作、更复杂的多指协调与更细粒度的接触建模，因此在数据采集、标注与标准化评测方面门槛更高。夹爪任务中常见的抓取数据集往往只需记录二分类的"成功/失败"标签即可构建数百万规模的离线样本（如MultiGrasp、DexNet等）；而灵巧手操作则需要完整记录多自由度的时序动作、力接触分布甚至环境变化，造成采集系统昂贵、遮挡难以消除，数据也难以标准化复用。此外，由于灵巧操作目标多样（如旋转、捏取、递物、整理等），数据泛化能力与硬件无关性也成为核心挑战。数据集往往还分为两类：一类是基于仿真生成的合成数据集，另一类是基于真实操作采集的真实数据集。前者通常具有更高的可控性和多样性，但可能面临仿真与现实之间的差距问题；后者则能提供更真实的操作数据，但采集成本较高，且对设备精度与操作熟练度有一定依赖。
@@ -377,8 +383,7 @@ Lumina具身智能社区+具身智能指南: [链接](https://github.com/Tianxin
 
 
 # 关于我们/感谢😎
-<b>🦉Contributors</b>: <a href="https://scholar.google.com/citations?user=ZT8JOZEAAAAJ&hl=en">位德浩</a>，吴桐</a>，<a href="https://github.com/sen-code-lost">郭川俊</a>，<a href="https://github.com/woltium">王文晟</a>，林清泉</a>
-
+**🦉Contributors**: [位德浥](https://scholar.google.com/citations?user=ZT8JOZEAAAAJ&hl=en)，吴桐，[郭川俊](https://github.com/sen-code-lost)，[王文晟](https://github.com/woltium)，林清泉，[东林钟声]()
 <a href="https://github.com/Wu-Fisher/dexterity-aha-guide/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Wu-Fisher/dexterity-aha-guide" />
 </a>
