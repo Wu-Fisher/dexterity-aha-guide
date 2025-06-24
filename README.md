@@ -27,7 +27,11 @@
   <img src="./asset/gaiahand.PNG" alt="GaiaHand Render" style="max-width: 80%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 </div>
 
-> **GaiaHand** 是一款由微型关节模组组装的开源灵巧手，专为机器人爱好者和研究人员设计，提供高自由度和模块化的组装体验。
+> **GaiaHand** 是一款由微型关节模组组装的开源灵巧手，专为机器人爱好者和研究人员设计，提供高自由度和模块化的组装体验，让大家能够像组装乐高一样组装自己的DexHandBot。
+
+<div align="center">
+  <img src="./asset/GaiaBall.gif" alt="GaiaHand Assemble" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+</div>
 
 ### 📌 教程亮点：
 - **模块化设计**：每个关节独立组装，方便维护与升级。
@@ -41,6 +45,8 @@
   <img src="./asset/gaiahand-a.gif" alt="GaiaHand Assemble" width="400" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
 </div>
 
+- **[开源结构文件](https://cad.onshape.com/documents/913853e62f859c54c2954e0c/w/21739ff31a266b40d3f94263/e/46f10b356fc4737c5aaaa4b3)**: 已上传至CAD ONSHAPE 网站
+
 
 ---
 > **提示**：如需帮助或有任何疑问，请联系 timmoraty@hotmail.com
@@ -49,8 +55,7 @@
 
 我们计划在接下来的时间里，持续更新和完善本指南，以下是我们的一些计划：
 
-- **[开源灵巧手GaiaHand 结构组装教程]**：组装视频已经上传至B站[链接](https://www.bilibili.com/video/BV1Ysjzz4E6D/?buvid=Y34FD53B8124B62B4AC2B0D961F1AF6EBA9B&from_spmid=dt.dt.0.0&is_story_h5=false&mid=WaAUbX%2B2msa3czq%2F2v27EA%3D%3D&plat_id=504&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=29CEB906-3D62-46FD-B744-594C40BCE995&share_source=WEIXIN&share_tag=s_i&spmid=dt.dt.0.0&timestamp=1748439056&unique_k=AdGgI1D&up_id=276123533&vd_source=b9a952aeb6ad36adfd92f02ff3b34f58) 开源零件图纸，3D打印说明，物料清单，组装教程 内容正在整理中，预计20250613前发布。
-- **[开源灵巧手GaiaHand 代码调试教程]**：预计20250619前 release
+- **[开源灵巧手GaiaHand 结构组装教程]**：组装视频已经上传至B站[链接](https://www.bilibili.com/video/BV1Ysjzz4E6D/?buvid=Y34FD53B8124B62B4AC2B0D961F1AF6EBA9B&from_spmid=dt.dt.0.0&is_story_h5=false&mid=WaAUbX%2B2msa3czq%2F2v27EA%3D%3D&plat_id=504&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=29CEB906-3D62-46FD-B744-594C40BCE995&share_source=WEIXIN&share_tag=s_i&spmid=dt.dt.0.0&timestamp=1748439056&unique_k=AdGgI1D&up_id=276123533&vd_source=b9a952aeb6ad36adfd92f02ff3b34f58) 结构已开源。
 - **[灵巧手机械硬件设计]**：规范化、系统性地梳理市面主流灵巧手（含商业与开源），对其结构、参数、适用场景、开源资源与社区活跃度等进行详细对比
 - **[English Version]**：待整体内容稳定
 - **[Acosmos社区上线]**：积极筹备中
