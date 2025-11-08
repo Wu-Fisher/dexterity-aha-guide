@@ -1,0 +1,193 @@
+name: 🌐 Auto Translate README
+
+on:
+  # 当 README.md 发生变化时触发
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+
+  # 支持手动触发 (更灵活的控制)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: '强制重新翻译 (忽略缓存)'
+        required: false
+        type: boolean
+        default: false
+      target_lang:
+        description: '目标语言 (English/Japanese/Korean/etc.)'
+        required: false
+        type: string
+        default: 'English'
+      skip_if_recent:
+        description: '如果英文版在最近一次提交中已更新则跳过'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  translate:
+    name: Translate to English
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 获取最近两次提交,用于检测变化
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: 🔍 智能检查是否需要翻译
+        id: check_changes
+        run: |
+          NEED_TRANSLATE=false
+          SKIP_REASON=""
+
+          # 检查1: README.md 是否在本次提交中改变
+          if git diff HEAD^ HEAD --name-only | grep -q "^README.md$"; then
+            echo "📝 检测到 README.md 已变更"
+
+            # 检查2: docs/en/README.md 是否也在同一次提交中改变 (说明你手动更新了)
+            if git diff HEAD^ HEAD --name-only | grep -q "^docs/en/README.md$"; then
+              echo "🔍 发现 docs/en/README.md 也在同次提交中更新"
+
+              # 检查3: 判断是否是自动翻译的提交 (通过 commit message)
+              COMMIT_MSG=$(git log -1 --pretty=%B)
+              if echo "$COMMIT_MSG" | grep -q "Auto-translate"; then
+                echo "🤖 这是自动翻译提交,需要重新翻译"
+                NEED_TRANSLATE=true
+              else
+                echo "✋ 这是手动更新的提交,跳过自动翻译"
+                SKIP_REASON="英文版已在本次提交中手动更新"
+                NEED_TRANSLATE=false
+              fi
+            else
+              echo "✅ 仅 README.md 更新,需要翻译"
+              NEED_TRANSLATE=true
+            fi
+          else
+            echo "⏭️  README.md 未变更"
+            SKIP_REASON="源文件未变更"
+            NEED_TRANSLATE=false
+          fi
+
+          # 检查4: 强制翻译标志
+          if [ "${{ github.event.inputs.force }}" == "true" ]; then
+            echo "🚀 手动触发强制翻译"
+            NEED_TRANSLATE=true
+            SKIP_REASON=""
+          fi
+
+          # 输出结果
+          echo "need_translate=$NEED_TRANSLATE" >> $GITHUB_OUTPUT
+          echo "skip_reason=$SKIP_REASON" >> $GITHUB_OUTPUT
+
+          if [ "$NEED_TRANSLATE" == "true" ]; then
+            echo "🎯 结论: 需要执行翻译"
+          else
+            echo "⏭️  结论: 跳过翻译 (原因: $SKIP_REASON)"
+          fi
+
+      - name: 🌐 执行翻译
+        if: steps.check_changes.outputs.need_translate == 'true'
+        env:
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          TARGET_LANG="${{ github.event.inputs.target_lang }}"
+          if [ -z "$TARGET_LANG" ]; then
+            TARGET_LANG="English"
+          fi
+
+          echo "🚀 开始翻译 README.md -> $TARGET_LANG"
+          python scripts/translate_markdown.py \
+            README.md \
+            docs/en/README.md \
+            --lang "$TARGET_LANG" \
+            --api-base "https://api.siliconflow.cn" \
+            --model "Pro/deepseek-ai/DeepSeek-V3.1-Terminus"
+
+      - name: 📝 更新语言切换链接
+        if: steps.check_changes.outputs.need_translate == 'true'
+        run: |
+          # 确保英文版中的语言切换链接正确
+          # 将相对路径从 ./docs/en/README.md 改为 ../../README.md
+          if [ -f docs/en/README.md ]; then
+            sed -i 's|](./docs/en/README.md)|](../../README.md)|g' docs/en/README.md
+            sed -i 's|](README.md)|](../../README.md)|g' docs/en/README.md
+            sed -i 's|]\(./assets/|](../../assets/|g' docs/en/README.md
+            echo "✅ 语言切换链接已更新"
+          fi
+
+      - name: 📊 翻译质量检查
+        if: steps.check_changes.outputs.need_translate == 'true'
+        run: |
+          echo "📊 翻译质量检查:"
+          echo "原文件大小: $(wc -c < README.md) bytes"
+          echo "译文件大小: $(wc -c < docs/en/README.md) bytes"
+          echo "原文行数: $(wc -l < README.md)"
+          echo "译文行数: $(wc -l < docs/en/README.md)"
+
+      - name: 💾 提交翻译结果
+        if: steps.check_changes.outputs.need_translate == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add docs/en/README.md
+
+          # 检查是否有变更
+          if git diff --staged --quiet; then
+            echo "⏭️  没有需要提交的变更"
+          else
+            git commit -m "🌐 Auto-translate: Update English README
+
+            - Translated from latest Chinese version
+            - Generated by GitHub Actions
+            - Model: DeepSeek-V3.1-Terminus
+            - API: SiliconFlow"
+
+            echo "✅ 变更已提交"
+          fi
+
+      - name: 🚀 推送更改
+        if: steps.check_changes.outputs.need_translate == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: 📢 任务摘要
+        if: always()
+        run: |
+          echo "## 🌐 翻译任务报告" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.check_changes.outputs.need_translate }}" == "true" ]; then
+            echo "### ✅ 翻译已执行" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            if [ -f docs/en/README.md ]; then
+              echo "- 📄 输出文件: \`docs/en/README.md\`" >> $GITHUB_STEP_SUMMARY
+              echo "- 📊 文件大小: $(du -h docs/en/README.md | cut -f1)" >> $GITHUB_STEP_SUMMARY
+              echo "- 🌐 目标语言: ${{ github.event.inputs.target_lang || 'English' }}" >> $GITHUB_STEP_SUMMARY
+              echo "- 🤖 使用模型: DeepSeek-V3.1-Terminus" >> $GITHUB_STEP_SUMMARY
+              echo "- 🔧 API 服务: SiliconFlow" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "### ⏭️ 已跳过翻译" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**跳过原因**: ${{ steps.check_changes.outputs.skip_reason }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "💡 **提示**: 如需强制翻译,请使用 \`workflow_dispatch\` 并勾选 \`force\` 选项" >> $GITHUB_STEP_SUMMARY
+          fi
